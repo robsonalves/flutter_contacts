@@ -31,7 +31,7 @@ class ContactHelper {
 
   Future<Database> initDb() async {
       final databasesaPath = await getDatabasesPath();
-      final path = join(databasesaPath, "contacts.db");
+      final path = join(databasesaPath, "contactss.db");
 
      return await openDatabase(path, version: 1,
           onCreate: (Database db, int newerVersion) async {
@@ -72,7 +72,7 @@ class ContactHelper {
 
   Future<int> updateContact(Contact contact) async {
     Database dbContact = await db;
-    return await dbContact.update(contactTable, contact.toMap(), where: "$idColumn", whereArgs: [contact.id]);
+    return await dbContact.update(contactTable, contact.toMap(), where: "$idColumn = ?", whereArgs: [contact.id]);
   }
 
 
@@ -137,6 +137,6 @@ class Contact {
 
   @override
   String toString(){
-    return "Contact(:id $id, name: $name, email: $email, phone: $phone, img: $img)";
+    return "Contact(id: $id, name: $name, email: $email, phone: $phone, img: $img)";
   }
 }

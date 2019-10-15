@@ -43,7 +43,7 @@ class _HomePageState extends State<HomePage> {
             ),
             const PopupMenuItem<OrderOptions>(
                 child: Text("Ordernar de Z-A"),
-                value: OrderOptions.orderaz
+                value: OrderOptions.orderza
             )
           ],
             onSelected: _orderList,
@@ -200,6 +200,7 @@ class _HomePageState extends State<HomePage> {
         contacts.sort((a,b) {
           return a.name.toLowerCase().compareTo(b.name.toLowerCase());
         });
+        print('$result');
         break;
       case OrderOptions.orderza:
         contacts.sort((a,b) {
@@ -207,5 +208,7 @@ class _HomePageState extends State<HomePage> {
         });
         break;
     }
+    setState(() {
+    });
   }
 }
